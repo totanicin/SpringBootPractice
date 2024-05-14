@@ -53,17 +53,19 @@
       <tr>
         <td>お問い合わせ種別</td>
         <td>
-          <select name="contactType">
-            <option th:value="services">サービスに関するお問い合わせ</option>
-            <option th:value="technicalQuestions">技術的なお問い合わせ</option>
-            <option th:value="others">その他</option>
-          </select>
+			<select name="contactType">
+			  <option value="services">サービスに関するお問い合わせ</option>
+			  <option value="technicalQuestions">技術的なお問い合わせ</option>
+			  <option value="others">その他</option>
+			</select>
+
         </td>
       </tr>
       <tr>
         <td>お問い合わせ内容</td>
         <td>
-          <textarea name="body" row="4" cols="80"></textarea>
+			<textarea name="body" rows="4" cols="80"></textarea>
+
         </td>
       </tr>
     </table>
