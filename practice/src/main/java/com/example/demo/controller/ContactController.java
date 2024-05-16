@@ -53,7 +53,6 @@ public class ContactController {
 
     @PostMapping("/contact/register")
     public String register(Model model, HttpServletRequest request) {
-
         HttpSession session = request.getSession();
         ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
 
@@ -75,7 +74,6 @@ public class ContactController {
 
     @GetMapping("/contact/complete")
     public String complete(Model model, HttpServletRequest request) {
-
         if (request.getSession(false) == null) {
           return "redirect:/contact";
         }
