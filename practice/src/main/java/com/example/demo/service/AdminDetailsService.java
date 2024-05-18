@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,6 +13,7 @@ import com.example.demo.entity.Admin;
 import com.example.demo.repository.AdminRepository;
 
 @Service
+@Primary
 public class AdminDetailsService implements UserDetailsService {
 
     @Autowired

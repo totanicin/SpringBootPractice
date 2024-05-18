@@ -6,8 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 import com.example.demo.service.AdminDetailsService;
 
@@ -15,17 +18,20 @@ import com.example.demo.service.AdminDetailsService;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private AdminDetailsService adminDetailsService;
+    private final UserDetailsService userDetailsService;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public SecurityConfig(AdminDetailsService adminDetailsService, PasswordEncoder passwordEncoder) {
+        this.userDetailsService = adminDetailsService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeRequests(authorizeRequests -> authorizeRequests
-                .requestMatchers("/admin/signup", "/admin/signin").permitAll()
+                .requestMatchers("/admin/signup", "/admin/signin", "/contact/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(formLogin -> formLogin
@@ -39,13 +45,23 @@ public class SecurityConfig {
                 .logoutUrl("/admin/logout")
                 .logoutSuccessUrl("/admin/signin?logout")
                 .permitAll()
+            )
+            .csrf(csrf -> csrf
+                .csrfTokenRepository(csrfTokenRepository())  // CSRFトークンリポジトリの設定
             );
 
         return http.build();
     }
 
+    @Bean
+    public CsrfTokenRepository csrfTokenRepository() {
+        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+        repository.setSessionAttributeName("_csrf");  // CSRFトークンのセッション属性名を設定
+        return repository;
+    }
+
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(adminDetailsService).passwordEncoder(passwordEncoder);
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 }
