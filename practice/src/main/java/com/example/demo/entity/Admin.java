@@ -10,8 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "contacts")
-public class Contact {
+@Table(name = "admins")
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,29 +26,19 @@ public class Contact {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "zip_code")
-    private String zipCode;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "building_name")
-    private String buildingName;
-
-    @Column(name = "contact_type")
-    private String contactType;
-
-    @Column(name = "body")
-    private String body;
+    @Column(name = "current_sign_in_at")
+    private Timestamp currentSignInAt;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
 
     @Column(name = "update_at")
     private Timestamp updateAt;
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -82,52 +72,20 @@ public class Contact {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public Timestamp getCurrentSignInAt() {
+        return currentSignInAt;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBuildingName() {
-        return buildingName;
-    }
-
-    public void setBuildingName(String buildingName) {
-        this.buildingName = buildingName;
-    }
-
-    public String getContactType() {
-        return contactType;
-    }
-
-    public void setContactType(String contactType) {
-        this.contactType = contactType;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
+    public void setCurrentSignInAt(Timestamp currentSignInAt) {
+        this.currentSignInAt = currentSignInAt;
     }
 
     public Timestamp getCreatedAt() {
@@ -144,9 +102,5 @@ public class Contact {
 
     public void setUpdateAt(Timestamp updateAt) {
         this.updateAt = updateAt;
-    }
-    
-    public String getFullName() {
-        return this.firstName + " " + this.lastName;
     }
 }

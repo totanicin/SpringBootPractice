@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>お問い合わせ詳細</title>
+</head>
+<body>
+    <h1>お問い合わせ詳細</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <td th:text="${contact.id}"></td>
+        </tr>
+        <tr>
+            <th>姓</th>
+            <td th:text="${contact.lastName}"></td>
+        </tr>
+        <tr>
+            <th>名</th>
+            <td th:text="${contact.firstName}"></td>
+        </tr>
+        <tr>
+            <th>メール</th>
+            <td th:text="${contact.email}"></td>
+        </tr>
+        <tr>
+            <th>電話</th>
+            <td th:text="${contact.phone}"></td>
+        </tr>
+        <tr>
+            <th>郵便番号</th>
+            <td th:text="${contact.zipCode}"></td>
+        </tr>
+        <tr>
+            <th>住所</th>
+            <td th:text="${contact.address}"></td>
+        </tr>
+        <tr>
+            <th>建物名</th>
+            <td th:text="${contact.buildingName}"></td>
+        </tr>
+        <tr>
+            <th>お問い合わせ種別</th>
+            <td th:text="${contact.contactType}"></td>
+        </tr>
+        <tr>
+            <th>本文</th>
+            <td th:text="${contact.body}"></td>
+        </tr>
+        <tr>
+            <th>作成日時</th>
+            <td th:text="${contact.createdAt}"></td>
+        </tr>
+        <tr>
+            <th>更新日時</th>
+            <td th:text="${contact.updateAt}"></td>
+        </tr>
+    </table>
+    <form th:action="@{/admin/logout}" method="get">
+        <button type="submit">ログアウト</button>
+    </form>
+</body>
+</html>

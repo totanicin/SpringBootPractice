@@ -1,69 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>お問い合わせ内容の確認</title>
+    <meta charset="UTF-8">
+    <title>お問い合わせ確認</title>
 </head>
 <body>
-  <h1>お問い合わせ内容の確認</h1>
-  <form action="/contact/register" method="post">
-	<table border="1">
-		<tr>
-		    <td>姓</td>
-    	    <td>
-			   <span th:text="${contactForm.lastName}"></span>
-		    </td>
-		</tr>
-		<tr>
-		    <td>名</td>
-			<td>
-				<span th:text="${contactForm.firstName}"></span>
-			</td>
-		</tr>
-		<tr>
-			<td>メールアドレス</td>
-			<td>
-				<span th:text="${contactForm.email}"></span>
-			</td>
-		</tr>
-		<tr>
-			<td>電話番号</td>
-			<td>
-				<span th:text="${contactForm.phone}"></span>
-			</td>
-		</tr>
-		<tr>
-			<td>郵便番号</td>
-			<td>
-				<span th:text="${contactForm.zipCode}"></span>
-			</td>
-		</tr>
-		<tr>
-			<td>住所</td>
-			<td>
-				<span th:text="${contactForm.address}"></span>
-			</td>
-		</tr>
-		<tr>
-			<td>建物名</td>
-			<td>
-				<span th:text="${contactForm.buildingName}"></span>
-			</td>
-		</tr>
-		<tr>
-		    <td>お問い合わせ種別</td>
-		    <td>
-		        <span th:text="${contactForm.contactType}"></span>
-		    </td>
-		</tr>
-		<tr>
-			<td>お問い合わせ内容</td>	
-			<td>
-				<span th:text="${contactForm.body}"></span>
-			</td>
-		</tr>
-	</table>
-	<input type="submit" value="送信">
-  </form>
+<h1>お問い合わせ確認</h1>
+<form th:action="@{/contact/register}" method="post">
+    <table border="1">
+        <tr>
+            <td>姓</td>
+            <td th:text="${contactForm.lastName}">姓</td>
+        </tr>
+        <tr>
+            <td>名</td>
+            <td th:text="${contactForm.firstName}">名</td>
+        </tr>
+        <tr>
+            <td>メールアドレス</td>
+            <td th:text="${contactForm.email}">メールアドレス</td>
+        </tr>
+        <tr>
+            <td>電話番号</td>
+            <td th:text="${contactForm.phone}">電話番号</td>
+        </tr>
+        <tr>
+            <td>郵便番号</td>
+            <td th:text="${contactForm.zipCode}">郵便番号</td>
+        </tr>
+        <tr>
+            <td>住所</td>
+            <td th:text="${contactForm.address}">住所</td>
+        </tr>
+        <tr>
+            <td>建物名</td>
+            <td th:text="${contactForm.buildingName}">建物名</td>
+        </tr>
+        <tr>
+            <td>お問い合わせ種別</td>
+            <td th:text="${contactForm.contactType}">お問い合わせ種別</td>
+        </tr>
+        <tr>
+            <td>お問い合わせ内容</td>
+            <td th:text="${contactForm.body}">お問い合わせ内容</td>
+        </tr>
+    </table>
+    <input type="submit" value="送信"/>
+</form>
 </body>
 </html>
