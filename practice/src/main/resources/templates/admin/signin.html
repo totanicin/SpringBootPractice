@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理者のログイン画面</title>
+</head>
+<body>
+    <h1>管理者のログイン画面</h1>
+    <form th:action="@{/admin/signin}" method="post">
+        <div>
+            <label for="username">ユーザー名:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">パスワード:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">ログイン</button>
+        </div>
+    </form>
+    <form th:action="@{/admin/logout}" method="post">
+        <button type="submit">ログアウト</button>
+    </form>
+</body>
+</html>
